@@ -1,0 +1,7 @@
+version: '3'
+# services:
+#     db:
+#         container_name: myTestSqlVers57
+#         ports:
+#         - 4813:3306
+#         - 33570:33060
