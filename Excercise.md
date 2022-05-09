@@ -34,23 +34,28 @@ This is intended to help learn aspects of Docker by presenting challenges. The c
 
 prequisict
 
-    - q&a
-    - start docker without docker-compose.yml
+
+Topics:
+
 - docker override
 - 'hello world' with docker-compose
-
+- cpu usages / status
+- db backup restore
+- resource consumption / and running proccesses
+- docker-inspect
+    - 34 clean up after yourtr self
+    - q&a
+    - start docker without docker-compose.yml
     - file sharing with host and network sharing
-    - cpu usages / status
     - naming network
     - naming volumes
     - env vars
-    - clean-up
     - 06,11,14,16,19,22
     - 25, 26
     - extracting image
 
 
-01  #Hello world' with docker.#
+# 01  Hello world' with docker.#
     ** Exercise**
         a) run an docker-image that will display 'Hello world'
         b) create and run an docker-image (without dokcer-compose) bassed on alpine that will display 'midsummer-night'
@@ -58,7 +63,7 @@ prequisict
         a) docker run hello-world
         b) docker run alpine:latest "echo" "midsummer-night"
 
-02 #'docker-compose.override.yml'#
+# 02 'docker-compose.override.yml'#
     ** Background **
         The docker-compose.override.yml is the configuration file where you can override existing settings from docker-compose.yml or even add completely new services.
         By default, this file does not exist and you must create it. You can either copy the existing docker-compose.override.yml-example or create a new one.
@@ -96,7 +101,7 @@ prequisict
 >         - 4813:3306
 >         - 33570:33060
 
-03  #File sharing with the host#
+# 03 create a db from a sql-file when the container is created.#
     ** Excersice **
         You need to test a project. And must be able to reset te dataset.
         Adjust the following composer file
@@ -142,9 +147,9 @@ prequisict
 >       MYSQL_USER: user
 >       MYSQL_PASSWORD: password
 
+Side note: we usally install mysql local
 
-
-# 04
+# 04 Backup and Restore mysql db
     ** Excersice **
         - Create a back-up of the database named 'backup.sql'
         - Restore the backup 'backup.sql'
@@ -162,11 +167,7 @@ docker-compose down
 docker-compose up -d
 
 
-
-
-
-
-05 resource consumption / and running proccesses
+# 05 resource consumption / and running proccesses #
     ** Excersice **
         - find out how to get information about the resources a docker container consumes.
         - find out what proccess a docker container is running
@@ -178,15 +179,19 @@ docker stats
 docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}
 ### list resource consumption of containername1  containername2
 docker stats containername1  containername2
-## VFinding Resource Metrics With the Docker API
+## Finding Resource Metrics With the Docker API
 curl --unix-socket /var/run/docker.sock "http://localhost/v1.41/containers/{id}/stats" | jq
 Replace {id} with your container’s ID.
 ## Viewing Running Processes
 docker top bam-homestudiosapi-dev_beanstalk_1
 
-06
+# 06 docker inspect #
     ** Excersice **
+    find out what the command 'docker inspect' does. And Get an instance’s log path.
+    https://docs.docker.com/engine/reference/commandline/inspect/
     ** Posible solution **
+    https://docs.docker.com/engine/reference/commandline/inspect/
+
 07
     ** Excersice **
     ** Posible solution **
@@ -201,20 +206,9 @@ docker top bam-homestudiosapi-dev_beanstalk_1
         https://github.com/Vizuri/docker-exercises
 
 --------
-    image ~ class
-    container ~ instance
-
-    mysql-scripts-in-docker-entrypoint-initdb-are-not-executed
-    https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed
-
-    using-docker-to-create-restorable-mysql-database-for-ui-testing
-    https://stackoverflow.com/questions/41965815/using-docker-to-create-restorable-mysql-database-for-ui-testing
 
     docker volume prune
 
-# fails
-mysql -h localhost -p
-# works
-mysql -h 127.0.0.1 -p
+
 
 
