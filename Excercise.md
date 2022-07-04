@@ -299,3 +299,12 @@ The reason for this is that the -t option causes a pseudo tty (terminal) to be a
     https://www.viget.com/articles/local-docker-best-practices/
     https://devopscube.com/keep-docker-container-running/
 --------
+docker file --> image -->container
+
+apt-install
+
+rar
+
+wouter
+
+volgende week 1 nieuw plan
